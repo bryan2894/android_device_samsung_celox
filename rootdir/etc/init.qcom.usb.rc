@@ -36,6 +36,14 @@ on boot
     write /sys/class/android_usb/f_mass_storage/vendor_string "SAMSUNG"
     write /sys/class/android_usb/f_mass_storage/product_string $ro.product.model
 
+on fs
+    mkdir /dev/usb-ffs 0770 shell shell
+    mkdir /dev/usb-ffs/adb 0770 shell shell
+    mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
+    write /sys/class/android_usb/android0/f_ffs/aliases adb
+    mkdir /dev/bus 0755 root root
+    mkdir /dev/bus/usb 0755 root root
+
 # USB compositions
 on property:sys.usb.config=diag,adb
     write /sys/class/android_usb/android0/enable 0
