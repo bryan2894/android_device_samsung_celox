@@ -2,6 +2,11 @@
 # system.prop for Celox
 #
 
+ro.build.product=celox
+ro.product.device=celox
+ro.build.description=celox-user 4.1.2 JZO54K release-keys
+ro.build.fingerprint=samsung/celox/celox:4.1.2/JZO54K:user/release-keys
+
 rild.libpath=/system/lib/libril-qc-qmi-1.so
 rild.libargs=-d /dev/smd0
 
