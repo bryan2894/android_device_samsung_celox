@@ -23,7 +23,7 @@ $(call inherit-product-if-exists, vendor/samsung/celox/celox-vendor.mk)
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
-$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
