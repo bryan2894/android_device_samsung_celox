@@ -42,8 +42,7 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    init.qcom.usb.rc \
-    init.target.rc
+    init.qcom.usb.rc
 
 # System properties
 PRODUCT_PROPERTY_OVERRIDES += \
