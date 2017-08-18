@@ -32,11 +32,12 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+#include <android-base/properties.h>
+
 #include "init_celox.h"
 #include "vendor_init.h"
 #include "property_service.h"
 #include "log.h"
-#include "util.h"
 
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
@@ -97,5 +98,5 @@ void vendor_load_properties()
         write_file_int("/sys/module/board_msm8x60_celox/parameters/model", SGH_I727);
     }
 
-    ERROR("Found radio image for %s setting build properties for device\n", device_variant);
+    LOG(ERROR) << "Found radio image for " << device_variant << " setting build properties for device" << std::endl;
 }
