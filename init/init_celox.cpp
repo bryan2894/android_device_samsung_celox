@@ -35,6 +35,20 @@
 #include "log.h"
 #include "util.h"
 
+#define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
+#include <sys/_system_properties.h>
+
+void property_override(char const prop[], char const value[])
+{
+    prop_info *pi;
+
+    pi = (prop_info*) __system_property_find(prop);
+    if (pi)
+        __system_property_update(pi, value, strlen(value));
+    else
+        __system_property_add(prop, strlen(prop), value, strlen(value));
+}
+
 void vendor_load_properties()
 {
     char device_variant[92];
@@ -46,21 +60,21 @@ void vendor_load_properties()
 
     if (strstr(device_variant, "SGH-T989")) {
         /* hercules */
-        property_set("ro.build.fingerprint", "samsung/SGH-T989/SGH-T989:4.4/KRT16M/T989UVMC6:user/release-keys");
-        property_set("ro.build.description", "SGH-T989-user 4.4 KRT16M UVMC6 release-keys");
-        property_set("ro.product.model", "SGH-T989");
-        property_set("ro.product.device", "SGH-T989");
-        property_set("telephony.lteOnGsmDevice", "0");
-        property_set("ro.telephony.default_network", "3");
+        property_override("ro.build.fingerprint", "samsung/SGH-T989/SGH-T989:4.4/KRT16M/T989UVMC6:user/release-keys");
+        property_override("ro.build.description", "SGH-T989-user 4.4 KRT16M UVMC6 release-keys");
+        property_override("ro.product.model", "SGH-T989");
+        property_override("ro.product.device", "SGH-T989");
+        property_override("telephony.lteOnGsmDevice", "0");
+        property_override("ro.telephony.default_network", "3");
         write_file("/sys/devices/virtual/accelerometer/accelerometer/model", "1");
     } else if (strstr(device_variant, "SGH-I727")) {
         /* skyrocket */
-        property_set("ro.build.fingerprint", "samsung/SGH-I727/SGH-I727:4.1.2/JZO54K/I727UCMC1:user/release-keys");
-        property_set("ro.build.description", "SGH-I727-user 4.1.2 JZO54K I727UCMC1 release-keys");
-        property_set("ro.product.model", "SGH-I727");
-        property_set("ro.product.device", "SGH-I727");
-        property_set("telephony.lteOnGsmDevice", "1");
-        property_set("ro.telephony.default_network", "9");
+        property_override("ro.build.fingerprint", "samsung/SGH-I727/SGH-I727:4.1.2/JZO54K/I727UCMC1:user/release-keys");
+        property_override("ro.build.description", "SGH-I727-user 4.1.2 JZO54K I727UCMC1 release-keys");
+        property_override("ro.product.model", "SGH-I727");
+        property_override("ro.product.device", "SGH-I727");
+        property_override("telephony.lteOnGsmDevice", "1");
+        property_override("ro.telephony.default_network", "9");
         write_file("/sys/devices/virtual/accelerometer/accelerometer/model", "0");
     }
 
