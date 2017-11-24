@@ -1,0 +1,2 @@
+allow init_shell init:fifo_file { getattr write };
+allow init_shell block_device:blk_file r_file_perms;

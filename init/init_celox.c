@@ -59,7 +59,7 @@ void vendor_load_properties()
     char device_variant[92];
     FILE *fp;
 
-    fp = popen("/system/bin/strings /dev/block/mmcblk0p2 | /system/bin/grep -E ^SGH -m 1", "r");
+    fp = popen("/system/xbin/strings /dev/block/mmcblk0p2 | /system/xbin/grep -E ^SGH -m 1", "r");
     fgets(device_variant, sizeof(device_variant), fp);
     pclose(fp);
 

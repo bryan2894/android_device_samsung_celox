@@ -31,6 +31,7 @@ TARGET_BOOTLOADER_BOARD_NAME := MSM8660_SURF
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_celox
 TARGET_UNIFIED_DEVICE := true
+TARGET_LIBINIT_DEFINES_FILE := device/samsung/celox/init/init_celox.c
 
 # Kernel
 BOARD_KERNEL_BASE := 0x40400000
@@ -55,4 +56,8 @@ BOARD_SUPPRESS_EMMC_WIPE := true
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # SELinux
-BOARD_SEPOLICY_DIRS += device/samsung/celox/sepolicy
+BOARD_SEPOLICY_DIRS += \
+    device/samsung/celox/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+    init_shell.te
