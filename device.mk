@@ -56,3 +56,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # common msm8660
 $(call inherit-product, device/samsung/msm8660-common/msm8660.mk)
+
+# Build GO
+$(call inherit-product, build/target/product/go_defaults_512.mk)
