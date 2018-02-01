@@ -32,15 +32,17 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+#include <android-base/logging.h>
 #include <android-base/properties.h>
 
 #include "init_celox.h"
 #include "vendor_init.h"
 #include "property_service.h"
-#include "log.h"
 
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
+
+using android::init::property_set;
 
 int write_file_int(char const* path, int value)
 {
